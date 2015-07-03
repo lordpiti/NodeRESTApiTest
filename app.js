@@ -3,7 +3,7 @@ var express = require('express'),
     bodyParser = require('body-parser');
 
 
-var db = mongoose.connect('mongodb://localhost/bookAPI');
+var db = mongoose.connect('mongodb://lordpiti:Kidswast1@ds036648.mongolab.com:36648/MongoLab-e');
 
 var Book = require('./models/bookModel');
 
