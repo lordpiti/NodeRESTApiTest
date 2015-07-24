@@ -3,9 +3,11 @@ var express = require('express'),
     bodyParser = require('body-parser');
 
 
-var db = mongoose.connect('mongodb://localhost/bookAPI');
+//var db = mongoose.connect('mongodb://localhost/bookAPI');
+var db = mongoose.connect('mongodb://lordpiti:Kidswast1@ds036648.mongolab.com:36648/MongoLab-e');
 
 var Book = require('./models/bookModel');
+var Category = require('./models/categoryModel');
 
 var app = express();
 
@@ -21,7 +23,7 @@ app.use(function(req, res, next) {
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-bookRouter = require('./Routes/bookRoutes')(Book);
+bookRouter = require('./Routes/bookRoutes')(Book, Category);
 
 
 app.use('/api/books', bookRouter); 

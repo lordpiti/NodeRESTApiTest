@@ -1,7 +1,7 @@
 var express = require('express');
 
 
-var routes = function(Book){
+var routes = function(Book, Category){
     var bookRouter = express.Router();
 
     bookRouter.route('/')
@@ -26,6 +26,19 @@ var routes = function(Book){
                     res.status(500).send(err);
                 else
                     res.json(books);
+            });
+        });
+		
+	    bookRouter.route('/categories')
+        .get(function(req,res){
+
+            var query = {};
+
+            Category.find(query, function(err,categories){
+                if(err)
+                    res.status(500).send(err);
+                else
+                    res.json(categories);
             });
         });
 
